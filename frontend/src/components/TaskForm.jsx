@@ -61,30 +61,29 @@ function TaskForm() {
   };
 
   return (
-    <div>
+    <section className="task-form-card">
       <h2>{editingTask ? "Edit Task" : "Add New Task"}</h2>
-
-      <input
-        type="text"
-        placeholder="Enter task"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-
-      <br />
-      <br />
-
-      <textarea
-        placeholder="Enter description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-
-      <br />
-      <br />
-
-      <button onClick={handleSubmit}>{editingTask ? "Update Task" : "Add Task"}</button>
-    </div>
+      <label className="task-field">
+        Task title
+        <input
+          type="text"
+          placeholder="e.g. Plan the week"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </label>
+      <label className="task-field">
+        Description
+        <textarea
+          placeholder="Add a few helpful details..."
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </label>
+      <button className="task-submit" onClick={handleSubmit}>
+        {editingTask ? "Update Task" : "Add Task"}
+      </button>
+    </section>
   );
 }
 

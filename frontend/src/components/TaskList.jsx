@@ -24,22 +24,32 @@ function TaskList() {
   }
 
   return (
-    <div>
-      <h2>Tasks</h2>
-      <ul>
+    <section className="task-list-card">
+      <div className="task-list-heading">
+        <div>
+          <p className="task-list-eyebrow">YOUR WORKLOAD</p>
+          <h2>Tasks</h2>
+        </div>
+        <span className="task-count">{tasks.length}</span>
+      </div>
+      <ul className="task-list">
         {tasks.map((item) => (
-          <div key={item.id}>
-            <li >{item.title}</li>
-            <li >{item.description}</li>
-            <button onClick={() => handleDelete(item.id)}>Delete</button>
-            <button onClick={() => handleEdit(item)}>Edit</button>
-            <Link to={`/tasks/${item.id}`}>
-              View Details
-            </Link>
-          </div>
+          <li className="task-item" key={item.id}>
+            <div className="task-item-copy">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+            <div className="task-item-actions">
+              <button className="task-action" onClick={() => handleEdit(item)}>Edit</button>
+              <button className="task-action task-action-delete" onClick={() => handleDelete(item.id)}>Delete</button>
+              <Link className="task-details-link" to={`/tasks/${item.id}`}>
+                Details
+              </Link>
+            </div>
+          </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
 
